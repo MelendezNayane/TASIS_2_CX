@@ -68,17 +68,29 @@
 
     <script type="text/javascript">
         window.addEventListener("load", function() {
-            // 1. Inicializar Teléfonos
+            
+            // 1. Inicializar Teléfonos y guardar la instancia
             var phoneFields = document.querySelectorAll('[data-type="phone"]');
+            var itiInstances = []; // Guardaremos las instancias aquí
+            
             phoneFields.forEach(function(ele) {
-                window.intlTelInput(ele, {
-                    initialCountry: "auto",
+                var iti = window.intlTelInput(ele, {
+                    initialCountry: "pe", // Forzamos Perú por defecto para evitar fallos de IP
                     separateDialCode: true,
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Necesario para formatear
                     geoIpLookup: function(success, failure) {
-                        fetch('https://ipapi.co/json/').then(res => res.json()).then(data => success(data.country_code)).catch(() => success("us"));
+                        fetch('https://ipapi.co/json/')
+                            .then(res => res.json())
+                            .then(data => success(data.country_code))
+                            .catch(() => success("pe"));
                     }
                 });
+                
+                // Guardamos la instancia asociada al elemento
+                itiInstances.push({ element: ele, iti: iti });
             });
+            
+              
 
             // 2. Inicializar Select2
             jQuery("#__vtigerWebForm_2 select:visible").select2();
@@ -91,6 +103,16 @@
                     alert("El campo 'Last Name' es obligatorio.");
                     return false;
                 }
+                
+                 // 2. Al momento de enviar el formulario (IMPORTANTE)
+                itiInstances.forEach(function(item) {
+                    // Obtenemos el número completo: +51987654321
+                    var fullNumber = item.iti.getNumber();
+                    // Seteamos el valor completo en el input antes de que se envíe
+                    item.element.value = fullNumber;
+                });
+                //
+                
                 // Deshabilitar botón para evitar doble envío
                 document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
                 return true;
@@ -100,3 +122,4 @@
 </body>
 
 </html>
+
