@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validación de Identidad</title>
+    <style>
+        .step { display: none; font-family: sans-serif; padding: 20px; }
+        .active { display: block; }
+        button { margin-top: 15px; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="etapa2" class="step active">
+        <h2>Paso 2: Validación de Seguridad</h2>
+        <p>Por favor, resuelve la siguiente suma para continuar:</p>
+        <label><strong>¿Cuánto es 5 + 2?</strong></label><br>
+        <input type="number" id="input_suma" placeholder="Tu respuesta">
+        <button onclick="enviarBiometria()">Validar</button>
+    </div>
+
+    <div id="etapa3" class="step">
+        <h2>Paso 3: Términos y Condiciones</h2>
+        <p>Para finalizar, acepta nuestras políticas:</p>
+        <label>
+            <input type="checkbox" id="check_terminos"> Acepto los términos y condiciones.
+        </label><br>
+        <button onclick="enviarFinal()">Finalizar Registro</button>
+    </div>
+
+    <script>
+        // 1. Capturar el Token de la URL
+        const params = new URLSearchParams(window.location.search);
+        const tokenSeguro = params.get('token');
+        const WEBHOOK_N8N = "https://ksnores.app.n8n.cloud/webhook-test/c14abe41-daeb-499d-be12-7db118b0d15b";
+
+        async function enviarBiometria() {
+            const suma = document.getElementById('input_suma').value;
+            
+            // Validación local rápida
+            if(suma != "7") {
+                alert("Suma incorrecta. Reintenta.");
+                return;
+            }
+
+            // Enviar a n8n para actualizar Vtiger
+            await fetch(WEBHOOK_N8N, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    token: tokenSeguro,
+                    suma_resultado: suma,
+                    fase: "biometria"
+                })
+            });
+
+            // Pasar a la siguiente fase visualmente
+            document.getElementById('etapa2').classList.remove('active');
+            document.getElementById('etapa3').classList.add('active');
+        }
+
+        async function enviarFinal() {
+            const terminos = document.getElementById('check_terminos').checked;
+            
+            if(!terminos) {
+                alert("Debes aceptar los términos.");
+                return;
+            }
+
+            await fetch(WEBHOOK_N8N, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    token: tokenSeguro,
+                    acepto_terminos: true,
+                    fase: "finalizada"
+                })
+            });
+
+            alert("¡Gracias! Tu registro ha sido actualizado en nuestro sistema.");
+        }
+    </script>
+</body>
+</html>

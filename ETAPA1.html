@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Local Webform vTiger</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
+    <link rel="stylesheet" href="https://pucp6.od2.vtiger.com/layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css">
+
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        table { width: 100%; max-width: 500px; border-collapse: collapse; }
+        td { padding: 10px; }
+        input[type="text"], select { width: 100%; padding: 8px; box-sizing: border-box; }
+        [aria-multiselectable="true"] .select2-results__option[aria-selected="true"] { display: none !important; }
+        .submit-btn { margin-top: 20px; padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+        .submit-btn:disabled { background: #ccc; }
+    </style>
+</head>
+<body>
+
+    <h2>Formulario de Registro (vTiger Local Test)</h2>
+
+    <form id="__vtigerWebForm_2" name="WebForms_LanginPage_1" action="https://pucp6.od2.vtiger.com/modules/Webforms/capture.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+        
+        <input type="hidden" name="publicid" value="5802ec5f9b8f6cb135e9ddbe57cc4f4b">
+        <input type="hidden" name="urlencodeenable" value="1">
+        <input type="hidden" name="name" value="WebForms_LanginPage_1">
+        <input type="hidden" name="__vtCurrency" value="1">
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><label>Last Name *</label></td>
+                    <td><input type="text" name="lastname" maxlength="80" required=""></td>
+                    <td><input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td><input type="text" name="firstname" maxlength="40"></td>
+                </tr>
+                <tr>
+                    <td><label>Mobile Phone</label></td>
+                    <td><input type="text" name="mobile" maxlength="50" data-type="phone"></td>
+                </tr>
+                
+                <tr style="display:none;">
+                    <td>
+                        <select name="leadsource" data-label="leadsource">
+                            <option value="Web Site" selected>Web Site</option>
+                        </select>
+                        <select name="cf_leads_estadoonboarding" data-label="label:EstadoOnboarding">
+                            <option value="Datos" selected>Datos</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Enviar Formulario" id="vtigerFormSubmitBtn_2" class="submit-btn">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+    <script src="https://pucp6.od2.vtiger.com/layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+    <script src="https://pucp6.od2.vtiger.com/layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
+
+    <script type="text/javascript">
+        window.addEventListener("load", function() {
+            // 1. Inicializar Teléfonos
+            var phoneFields = document.querySelectorAll('[data-type="phone"]');
+            phoneFields.forEach(function(ele) {
+                window.intlTelInput(ele, {
+                    initialCountry: "auto",
+                    separateDialCode: true,
+                    geoIpLookup: function(success, failure) {
+                        fetch('https://ipapi.co/json/').then(res => res.json()).then(data => success(data.country_code)).catch(() => success("us"));
+                    }
+                });
+            });
+
+            // 2. Inicializar Select2
+            jQuery("#__vtigerWebForm_2 select:visible").select2();
+
+            // 3. Validación Básica
+            var form = document.getElementById("__vtigerWebForm_2");
+            form.onsubmit = function(e) {
+                var lastName = form.elements["lastname"].value.trim();
+                if (lastName === "") {
+                    alert("El campo 'Last Name' es obligatorio.");
+                    return false;
+                }
+                // Deshabilitar botón para evitar doble envío
+                document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
+                return true;
+            };
+        });
+    </script>
+</body>
+</html>
