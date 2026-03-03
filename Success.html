@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Banco Digital Simple - Cuenta Confirmada</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "3xl": "2rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .confetti-piece {
+            position: fixed;
+            top: -10px;
+            z-index: 50;
+            pointer-events: none;
+            animation: fall 4s linear forwards;
+        }
+        .confetti-blue { background-color: #2563eb; }
+        .confetti-lightblue { background-color: #93c5fd; }
+        .confetti-white { background-color: #e2e8f0; }
+        .shape-circle { border-radius: 50%; width: 8px; height: 8px; }
+        .shape-square { width: 8px; height: 8px; }
+        .shape-rect { width: 5px; height: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4 overflow-x-hidden">
+<div class="confetti-piece confetti-blue shape-circle" style="left: 10%; animation-delay: 0s; animation-duration: 5s;"></div>
+<div class="confetti-piece confetti-lightblue shape-square" style="left: 25%; animation-delay: 1.5s; animation-duration: 6s;"></div>
+<div class="confetti-piece confetti-white shape-rect" style="left: 40%; animation-delay: 0.5s; animation-duration: 4.5s;"></div>
+<div class="confetti-piece confetti-blue shape-square" style="left: 55%; animation-delay: 2s; animation-duration: 5.5s;"></div>
+<div class="confetti-piece confetti-lightblue shape-circle" style="left: 70%; animation-delay: 1s; animation-duration: 4.8s;"></div>
+<div class="confetti-piece confetti-white shape-square" style="left: 85%; animation-delay: 2.5s; animation-duration: 5.2s;"></div>
+<div class="confetti-piece confetti-blue shape-rect" style="left: 95%; animation-delay: 0.8s; animation-duration: 6.5s;"></div>
+<div class="max-w-[580px] w-full bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 relative z-10 my-8">
+<main class="p-8 md:p-12 text-center flex flex-col items-center">
+<div class="mb-8">
+<div class="size-24 md:size-28 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center">
+<div class="size-16 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl md:text-6xl font-bold">check</span>
+</div>
+</div>
+</div>
+<h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+                ¡Ya casi terminamos!
+            </h2>
+<p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
+                Recibimos tus datos correctamente. En breves momentos nuestro asesor virtual se comunicará contigo por WhatsApp para que puedas completar la apertura de tu Cuenta Digital Simple desde tu celular.
+            </p>
+<div class="w-full bg-blue-50/30 dark:bg-blue-900/5 rounded-3xl p-6 md:p-8 mb-10 border border-blue-50 dark:border-slate-800">
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-left">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">message</span>
+</div>
+<p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Revisa tu celular o WhatsApp</p>
+</div>
+<div class="flex items-center gap-4 text-left">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">badge</span>
+</div>
+<p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Ten tu DNI a la mano</p>
+</div>
+<div class="flex items-center gap-4 text-left">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">qr_code_scanner</span>
+</div>
+<p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Activa tu cuenta desde el enlace que te enviaremos</p>
+</div>
+</div>
+</div>
+<button class="w-full py-5 px-8 bg-primary hover:bg-blue-700 text-white font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.98] flex items-center justify-center gap-3">
+<span>Ir al inicio</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</main>
+<footer class="p-6 bg-slate-50/50 dark:bg-slate-800/30 flex justify-center gap-8 border-t border-slate-100 dark:border-slate-800">
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1 text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-lg">help_center</span>
+                Ayuda
+            </a>
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1 text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-lg">security</span>
+                Seguridad
+            </a>
+</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Banco Digital Simple - Tu banca fácil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0084ff",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        "large": "2rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 100%);
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-icons-outlined text-white">account_balance</span>
+</div>
+<span class="font-bold text-xl tracking-tight hidden md:block">Banco Digital Simple</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<div class="group relative">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+                            Productos <span class="material-icons-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="group relative">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+                            Servicios <span class="material-icons-outlined text-sm">expand_more</span>
+</button>
+</div>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined text-slate-600 dark:text-slate-300">dark_mode</span>
+</button>
+<button class="hidden sm:block px-6 py-2.5 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary/5 transition-all">
+                        Banca por internet
+                    </button>
+<a href="formulario.html">
+    <button class="px-6 py-2.5 bg-primary text-white font-semibold rounded-full hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
+        Abrir cuenta
+    </button>
+</a>
+</div>
+</div>
+</div>
+</header>
+<section class="hero-gradient overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 z-10">
+<h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
+                        Tu dinero, <br/>
+<span class="text-primary">clarito</span> y sin miedo.
+                    </h1>
+<div class="space-y-2 text-lg text-slate-600 dark:text-slate-300">
+<div class="flex items-center gap-2">
+<span class="material-icons-outlined text-primary text-sm">help_outline</span>
+<p>Abre tu cuenta digital con COSTO S/.0</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-icons-outlined text-primary text-sm">help_outline</span>
+<p>Recibes hasta 4.1 % de TREA</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<!--
+<button class="px-8 py-4 bg-primary text-white text-lg font-bold rounded-2xl hover:bg-blue-600 transition-all shadow-xl shadow-primary/30">
+                            ¡Abre tu cuenta HOY!
+                        </button>
+   -->
+                        
+
+<button class="px-8 py-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur border border-slate-200 dark:border-slate-700 text-lg font-semibold rounded-2xl hover:bg-white/80 dark:hover:bg-slate-800 transition-all">
+                            Compara nuestra oferta
+                        </button>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="absolute -top-10 right-0 md:right-10 transform rotate-12 z-20 animate-bounce transition-all duration-[3000ms]">
+<div class="w-48 h-32 bg-slate-900 rounded-xl p-4 shadow-2xl border border-slate-700">
+<div class="flex justify-between items-start mb-4">
+<div class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons-outlined text-primary text-xs">account_balance</span>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">BLACK</span>
+</div>
+<div class="text-white font-bold text-lg">BDS</div>
+<div class="mt-4 flex justify-between items-end">
+<span class="text-[8px] text-slate-500">**** 4589</span>
+<div class="flex -space-x-1">
+<div class="w-4 h-4 bg-red-500 rounded-full"></div>
+<div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 md:left-10 transform -rotate-6 z-20 animate-pulse">
+<div class="w-48 h-32 bg-white rounded-xl p-4 shadow-2xl border border-slate-100">
+<div class="flex justify-between items-start mb-4">
+<div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-icons-outlined text-primary text-xs">account_balance</span>
+</div>
+<span class="text-[10px] text-slate-400 font-mono">PLUM</span>
+</div>
+<div class="text-primary font-bold text-lg">BDS</div>
+<div class="mt-4 flex justify-between items-end">
+<span class="text-[8px] text-slate-400">**** 2104</span>
+<div class="flex -space-x-1">
+<div class="w-4 h-4 bg-red-500 rounded-full"></div>
+<div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-full aspect-square flex items-center justify-center">
+<div class="w-80 h-80 bg-primary/10 rounded-full absolute blur-3xl"></div>
+<img alt="Happy customer" class="relative z-10 w-full max-w-sm rounded-3xl object-cover h-[500px] shadow-2xl transform scale-105 hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRkqW4g69-jYEyEbcIaCtkPtM1XPhUVdxuW2ebdoRHRlmuS9YbpybmHmGrBrMPfO17R4arUXLo6FisoOMp0wdOT81XXjg15x93Y4kfnv_qBaElvyUeLlon2DVpJCe5GidbNoCrS3cnkzU6LciLaiWBQ-KR_VtXWNCr5alI3Jl00P_8KkZ4-3kLlSWtvXwhsTLjTMQw3vtmqkBLKDirfxDds1Kho9f4raDoWhJeUx4bOalsvjpV8PzYK43gF3wbgzmViNouEKUw3xs"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-4xl font-bold mb-16">Abre tu cuenta en <span class="text-primary">4 simples pasos</span></h2>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group">
+<div class="bg-primary aspect-square rounded-[2.5rem] p-8 mb-6 shadow-2xl shadow-primary/20 flex flex-col items-center justify-center group-hover:-translate-y-2 transition-transform">
+<div class="bg-white/20 p-4 rounded-3xl backdrop-blur-sm w-full h-full flex flex-col items-center justify-center overflow-hidden">
+<span class="material-icons-outlined text-white text-6xl">smartphone</span>
+<div class="mt-4 w-3/4 h-2 bg-white/20 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-white"></div>
+</div>
+<span class="text-white/80 text-[10px] mt-2">Cargando...</span>
+</div>
+</div>
+<div class="text-5xl font-black text-slate-200 dark:text-slate-800 mb-2">1</div>
+<p class="text-slate-600 dark:text-slate-400 px-4">Descarga la app BDS o desde la página web dale clic en "Abrir cuenta".</p>
+</div>
+<div class="group">
+<div class="bg-primary aspect-square rounded-[2.5rem] p-8 mb-6 shadow-2xl shadow-primary/20 flex flex-col items-center justify-center group-hover:-translate-y-2 transition-transform">
+<div class="bg-white/20 p-4 rounded-3xl backdrop-blur-sm w-full h-full flex flex-col items-center justify-center overflow-hidden relative">
+<div class="absolute inset-0 border-2 border-primary/50 m-4 rounded-2xl flex items-center justify-center">
+<span class="material-icons-outlined text-white text-6xl">face</span>
+<div class="absolute inset-x-0 top-1/2 h-0.5 bg-cyan-400/50 animate-pulse"></div>
+</div>
+</div>
+</div>
+<div class="text-5xl font-black text-slate-200 dark:text-slate-800 mb-2">2</div>
+<p class="text-slate-600 dark:text-slate-400 px-4">Completa un breve formulario, autoriza tu cámara, toma una foto a tu DNI y haz una selfie.</p>
+</div>
+<div class="group">
+<div class="bg-primary aspect-square rounded-[2.5rem] p-8 mb-6 shadow-2xl shadow-primary/20 flex flex-col items-center justify-center group-hover:-translate-y-2 transition-transform">
+<div class="bg-white/90 p-6 rounded-3xl w-full h-full flex flex-col items-center justify-center gap-4">
+<div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center text-red-500">
+<span class="material-icons-outlined text-4xl">person</span>
+</div>
+<div class="w-full h-10 bg-slate-100 rounded-xl flex items-center px-3 gap-2">
+<span class="material-icons-outlined text-slate-400 text-sm">account_circle</span>
+<div class="w-2/3 h-2 bg-slate-300 rounded-full"></div>
+</div>
+<div class="w-full h-10 bg-slate-100 rounded-xl flex items-center px-3 gap-2">
+<span class="material-icons-outlined text-slate-400 text-sm">lock</span>
+<div class="flex gap-1 text-slate-400 text-xs">•••••</div>
+</div>
+</div>
+</div>
+<div class="text-5xl font-black text-slate-200 dark:text-slate-800 mb-2">3</div>
+<p class="text-slate-600 dark:text-slate-400 px-4">Con esa clave podrás ingresar al APP BDS y hacer tus operaciones con seguridad.</p>
+</div>
+<div class="group">
+<div class="bg-primary aspect-square rounded-[2.5rem] p-8 mb-6 shadow-2xl shadow-primary/20 flex flex-col items-center justify-center group-hover:-translate-y-2 transition-transform">
+<div class="bg-white/20 p-4 rounded-3xl backdrop-blur-sm w-full h-full flex flex-col items-center justify-center overflow-hidden">
+<div class="w-full bg-white rounded-xl p-3 shadow-lg">
+<div class="flex justify-between mb-4">
+<span class="material-icons-outlined text-primary">menu</span>
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+</div>
+<div class="text-[10px] text-slate-400">Saldo disponible</div>
+<div class="text-sm font-bold text-slate-800">S/ 7.500,00</div>
+<div class="mt-4 space-y-2">
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-2 w-2/3 bg-slate-100 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-5xl font-black text-slate-200 dark:text-slate-800 mb-2">4</div>
+<p class="text-slate-600 dark:text-slate-400 px-4">Tu cuenta digital YA está lista y activa para que la uses.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl font-bold">Todo lo que necesitas para <br/> manejar tu dinero, <span class="text-primary">en un solo lugar</span></h2>
+<p class="text-slate-500">Todo lo que necesitas es a <span class="font-bold text-primary">BDS</span></p>
+</div>
+<div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+<div class="w-full lg:w-1/3 space-y-12 order-2 lg:order-1">
+<div class="flex items-center gap-6 text-right justify-end group">
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Saldo y movimientos</h4>
+<p class="text-slate-500 text-sm">Lleva en orden tus operaciones.</p>
+</div>
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-icons-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="flex items-center gap-6 text-right justify-end group">
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Transferencias bancarias</h4>
+<p class="text-slate-500 text-sm">Realiza transferencias entre tus cuentas, a cuentas de terceros u otros bancos.</p>
+</div>
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-icons-outlined">swap_horiz</span>
+</div>
+</div>
+<div class="flex items-center gap-6 text-right justify-end group">
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Recibe soporte siempre</h4>
+<p class="text-slate-500 text-sm">Nuestro agente Leo estará siempre disponible para ayudarte ante errores o dudas.</p>
+</div>
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-primary shadow-lg flex items-center justify-center text-white">
+<span class="material-icons-outlined">support_agent</span>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/3 flex justify-center order-1 lg:order-2">
+<div class="relative w-72 h-[550px] bg-slate-900 rounded-[3rem] p-4 border-8 border-slate-800 shadow-[0_0_100px_rgba(0,132,255,0.15)] overflow-hidden">
+<div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-3xl z-20 flex justify-center items-center">
+<div class="w-20 h-4 bg-black rounded-full"></div>
+</div>
+<div class="bg-white dark:bg-slate-950 h-full w-full rounded-[2rem] overflow-hidden flex flex-col">
+<div class="p-6 pt-10">
+<div class="flex items-center gap-1 text-[10px] text-slate-400 mb-6">
+<span class="material-icons-outlined text-xs">chevron_left</span> <span>Cashback</span>
+</div>
+<div class="grid grid-cols-5 gap-3 mb-8">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img alt="App icon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk24dYRacaUhN0kG-l4qvA6-cFz7ibQn2DsNBy_DqL2DLVBsGuVNp8RpJzexvV08gdnkjEuCZKziISiKo-zKxAcnEhSxEhSkLos9RiX3uHO69qmmsXl-mtyiqj91IInV0H5CakMhwxpQsHZTtITdYx1KJTWpep1MJqPS8cFKwpY8_ruBEgZAUyDzSyQRbKRc0jCd4qz58bRT-JigxXwFYKLAZ4c42rXBiFnZ3KCSPNDekt4FMKJTZmcFLvGNZD3GJzrnFEF2G7p8M"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800"></div>
+</div>
+<div class="text-center space-y-1">
+<p class="text-xs text-slate-500">Este mes has ganado</p>
+<h3 class="text-3xl font-black">S/ 28,75</h3>
+<p class="text-[8px] text-slate-400">Total histórico: S/ 1250,74</p>
+</div>
+<div class="mt-8 space-y-4">
+<div class="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center text-white">
+<span class="material-icons-outlined text-sm">shopping_bag</span>
+</div>
+<div>
+<div class="text-[10px] font-bold">Giyim</div>
+<div class="text-[8px] text-orange-600">5% de retorno</div>
+</div>
+</div>
+<div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+<span class="material-icons-outlined text-sm">videogame_asset</span>
+</div>
+<div>
+<div class="text-[10px] font-bold">PlayStation</div>
+<div class="text-[8px] text-blue-600">10% de retorno</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/3 space-y-12 order-3">
+<div class="flex items-center gap-6 group">
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-icons-outlined">savings</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Ahorra dinero</h4>
+<p class="text-slate-500 text-sm">Ahorra dinero en nuestro monedero digital.</p>
+</div>
+</div>
+<div class="flex items-center gap-6 group">
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-icons-outlined">trending_up</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Incrementa tus fondos</h4>
+<p class="text-slate-500 text-sm">Gana hasta un 4.01% de tu dinero ahorrado en un año.</p>
+</div>
+</div>
+<div class="flex items-center gap-6 group">
+<div class="w-14 h-14 shrink-0 rounded-2xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-icons-outlined">qr_code_2</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-lg group-hover:text-primary transition-colors">Paga y recibe pagos QR</h4>
+<p class="text-slate-500 text-sm">Realiza pagos escaneando QR. Comparte tu código QR para recibir pagos instantáneos.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div class="space-y-4">
+<h2 class="text-4xl font-bold">¿Necesitas ayuda o no <br/> entiendes algún tema?</h2>
+<div class="flex items-center gap-2 text-slate-500 cursor-pointer hover:text-primary transition-colors">
+<span>Todos</span> <span class="material-icons-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="group cursor-pointer">
+<div class="bg-slate-100 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all">
+<div class="relative aspect-video">
+<img alt="Video tutorial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYI4oUoqgy3_QFw13wnbWflU-plVGcAsafrCm60YYF1OnFZHytklF1kFJR3ifWxfooZPtkDM6SbD9E2uT1BlmWO6lYD8yzia-obQJwL88bqLMRJ-nBC-M62H_kWTi_IM-REch_-nrZkKOQ0F4OAqbkXl_dYxPNXbyILqpYGYwW2SiWTboIvCjHQZCjm8Qr4cGo2C-K2xcFdEYY3q89JDUboI6tUewjgZtDcUvqJ4ib0tsL8VG0j1wGd3keInZlN8PBYMxo_WEvYDE"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+<div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-6 text-center">
+<p class="font-medium text-slate-700 dark:text-slate-300">Bloquea tu cuenta en 20 segundos</p>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="bg-slate-100 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all">
+<div class="relative aspect-video">
+<img alt="Fintech tutorial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuKro9COBpexrJ7bJGwEPvNYR5C6Nz5PlZdVXMMIfFj6iQFrA8_k03RGrtuwvptI9PZKpLkUWGKO2vUzMRxIfCrneU5W2Hmzk9rmW2avGB3w34q7r7FqKwAxQlZuigsGYCMPBgPqPHxGaLj1sY_VHRARVv0CZbT19RDG7bUG1OXCpC1IytLY6_YF5kjeiwlCxx2ENEFsY8NvLxVFPY3cpvTibnsz7mKeOdI_jVIOIIjM0OBEuX1kjBu0fiYvtoWQLbr7O-DZs-MZM"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+<div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-6 text-center">
+<p class="font-medium text-slate-700 dark:text-slate-300">¿Qué es TREA?</p>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="bg-slate-100 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all">
+<div class="relative aspect-video">
+<img alt="Atm tutorial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVhXR_Gxpc84Z5zcMGT-q58iQysE1WOnBqyvKWZpiqM0koHsqXnzzd1eV362todqKiX6GzB2BgLy-vfaU_xtm7dENyBxtfNMmdovqHRc2CSoBmYmI-MV5G6zQAMCKSp08ksk9jJxc_QpYOp4nZ9Ca6TJiTHRuRhpIf3nwA07LDVcILraaPjaKKW4zdS3X6jJd67d2WzCGk3xhpqo-TaQw7jPnOElKeolNMA47AXI3IbPPzaJSHk23ARrPHCDKoTLFAwzIOD9Rvovg"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+<div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-6 text-center">
+<p class="font-medium text-slate-700 dark:text-slate-300">¿Donde obtengo mi efectivo?</p>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="bg-slate-100 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all">
+<div class="relative aspect-video">
+<img alt="Requirements tutorial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcHlv1XXbd8cm8jnWOpmN7hvKtyudiJvj-hlngi9FkjsohEG-KtK-v6muMLCT69kQowpbJ0cTseZbORUZ94z-NHBNtZAj2wKHk8R228ufv5TR5c71i4rBvZx5NJTKWYhI2WzGAbi_-NAAemHsY7F7xcGJo6Wg5UFP75LwnH3ET6RJSei8IzsBdBfNTYoSEFD90hiwz-KMcL-zsUZPojvHxMtJ1jUvrcHSkMF7PuFK6igOU7r7utYs4G4EaqkauB8nkkV9OzTh52bc"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+<div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-6 text-center">
+<p class="font-medium text-slate-700 dark:text-slate-300">¿Cuáles son los requisitos?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center items-center gap-3">
+<span class="material-icons-outlined text-slate-300 text-lg">chevron_left</span>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-slate-200"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-slate-200"></div>
+<div class="w-2 h-2 rounded-full bg-slate-200"></div>
+</div>
+<span class="material-icons-outlined text-slate-300 text-lg">chevron_right</span>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-slate-950 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-20">
+<div class="relative w-full lg:w-1/2 flex justify-center">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-150"></div>
+<div class="relative animate-float">
+<img alt="BDS App Interface" class="w-64 h-auto rounded-[3rem] shadow-2xl border-8 border-slate-900 rotate-[-10deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdMlLxq8b9RevhzLEw8s2B6sHAZ7aBAdbt_MbG5pP1_ruMZ0sajJn6NPTQPNoiu-zhme6QgZUYMV-0-jztMQ66w2VTVeGxU3_Y-ElqBr2T3hWRq_OA9CoCgQsNMLmLsyiTp-uoOoNeQ9HtlHZWK5nbsKDunclA1t_9Rxc3aoPk2saS8Pn6mQx652JV5aQ79Afo6F1ewJE71kfuUey_8j7YtX9cW1tPlbsdZzBAoNS4jzu2wk78D4LtcdbIcF7aRKg_El5u0t_euHc"/>
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-contain bg-no-repeat opacity-80" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXQ755odRcsEpO68z8k07LclF4TDXEqgn6C4OSQ5gXIHeE-bP5NIwCAbaF_JDi_jKKXwWrw06RAznAMdmYNvwIfdoY2N61-PNfRcEPSh74RgoJ-mq4G_wg9Z2xwufKyDY2vcwppFRDMbUSEYGXYAGUp7h93T1vI64v8SoOkQptBDEVmebnBZKU6lJ6Qku3ACqfg0AgesnhK0t3BxAMv-Yen4beSrHqM2w6Hwy6BH6wzZbwLZtFwqJmgp9FsEGd9El1nFg6yutjoVs');"></div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 space-y-8">
+<h2 class="text-5xl font-extrabold leading-tight">Descarga la <br/> aplicación de <span class="text-primary">BDS</span></h2>
+<p class="text-lg text-slate-600 dark:text-slate-400">Gestiona tu dinero inteligentemente y gana un extra sin preocupaciones. Disponible para iOS y Android.</p>
+<div class="flex flex-wrap items-center gap-6">
+<div class="w-32 h-32 bg-slate-100 dark:bg-slate-900 p-2 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="w-full h-full bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center p-2">
+<img alt="QR Code" class="w-full h-full opacity-80 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQAVkN8fLto4XkoQfdI_rVSwKcd8RmL137pls8qrrybsSUrCRDpFSsSP6mvE-pJt59rhJchR_NUoAmriGogaDn_JpKBGRyn32Hptrccu_7VTWqS7UrXpW-hxamFIxyTL7tG466IBTWkiapN3SDqRIEEiS5bv2AJzzGQt-xbNvvtzoShtasPAlvixlnlHkvo0sP71TFAcOs94_YTOYtDKU3JGFzYjfrZmucd82s4eL3AXysaphId8WLYH7uwVC04G3YP5DLhaOwPAM"/>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex items-center gap-4 bg-slate-900 text-white px-6 py-3 rounded-2xl hover:bg-slate-800 transition-colors w-56">
+<span class="material-icons-outlined text-4xl">apple</span>
+<div class="text-left">
+<div class="text-[10px] uppercase opacity-70">Download on the</div>
+<div class="text-xl font-bold leading-none">App Store</div>
+</div>
+</button>
+<button class="flex items-center gap-4 bg-slate-900 text-white px-6 py-3 rounded-2xl hover:bg-slate-800 transition-colors w-56">
+<span class="material-icons-outlined text-4xl">shop</span>
+<div class="text-left">
+<div class="text-[10px] uppercase opacity-70">Get it on</div>
+<div class="text-xl font-bold leading-none">Google Play</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-slate-950 text-slate-400 py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons-outlined text-sm">account_balance</span>
+</div>
+<span class="text-white font-bold tracking-tight">Banco Digital Simple</span>
+</div>
+<div class="flex gap-8 text-sm">
+<a class="hover:text-primary transition-colors" href="#">Seguridad</a>
+<a class="hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="hover:text-primary transition-colors" href="#">Términos</a>
+<a class="hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+<div class="flex gap-6">
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-icons-outlined text-xl">play_circle_filled</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-icons-outlined text-xl">tiktok</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-icons-outlined text-xl">camera_alt</span>
+</a>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-900 text-center text-xs opacity-50">
+                © 2024 Banco Digital Simple. Todos los derechos reservados. Miembro del Fondo de Seguro de Depósitos.
+            </div>
+</div>
+</footer>
+<style>
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-10deg); }
+            50% { transform: translateY(-20px) rotate(-8deg); }
+            100% { transform: translateY(0px) rotate(-10deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+
+</body></html>

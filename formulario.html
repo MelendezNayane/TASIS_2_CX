@@ -1,0 +1,258 @@
+<style> 
+    [aria-multiselectable="true"] .select2-results__option[aria-selected="true"] {
+        display: none !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" href="https://pucp7.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css">
+
+<!-- FontAwesome para imágenes vectoriales -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div style="max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif;">
+    <div style="display: flex; background: white; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden;">
+        
+        <!-- COLUMNA IZQUIERDA: Beneficios (con imágenes) -->
+        <div style="flex: 1; background: linear-gradient(135deg, #0a2540, #1a3a5f); padding: 40px; color: white; display: flex; flex-direction: column;">
+            
+            <!-- Encabezado -->
+            <div style="margin-bottom: 30px;">
+                <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em;">
+                    Cuenta Digital Simple
+                </h1>
+                <p style="font-size: 16px; opacity: 0.8;">
+                    Sin vueltas. Sin comisiones. Sin complicaciones.
+                </p>
+            </div>
+            
+            <!-- Beneficios en columna vertical -->
+            <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 10px;">
+                
+                <!-- Beneficio 1 - Tasa -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 20px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0;">
+                        <i class="fas fa-coins" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 600; font-size: 18px; margin-bottom: 4px;">Tasa 4.01%</h3>
+                        <p style="opacity: 0.7; font-size: 14px;">Rendimiento anual competitivo</p>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 2 - Cero comisiones -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 20px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0;">
+                        <i class="fas fa-check-circle" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 600; font-size: 18px; margin-bottom: 4px;">Cero comisiones</h3>
+                        <p style="opacity: 0.7; font-size: 14px;">Sin mantenimiento mensual</p>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 3 - Ahorro por metas -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 20px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0;">
+                        <i class="fas fa-bullseye" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 600; font-size: 18px; margin-bottom: 4px;">Ahorro por metas</h3>
+                        <p style="opacity: 0.7; font-size: 14px;">Organiza tu dinero fácilmente</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Badges de confianza -->
+            <div style="margin-top: auto; padding-top: 30px; display: flex; gap: 12px; justify-content: center;">
+                <span style="background: rgba(255,255,255,0.1); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;">SBS</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;">Fondo Seguro</span>
+            </div>
+        </div>
+        
+        <!-- COLUMNA DERECHA: Formulario (sin cambios) -->
+        <div style="flex: 1; padding: 48px; background: white;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">
+                Abre tu Cuenta Simple en minutos
+            </h2>
+            <p style="color: #64748b; margin-bottom: 32px; font-size: 15px;">
+                Bríndanos tus datos de contacto
+            </p>
+            
+            <form id="__vtigerWebForm_1" name="Apertura" action="https://pucp7.od2.vtiger.com/modules/Webforms/capture.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <input type="hidden" name="publicid" value="56ba0e94ebdc3f5249c1c973dc0c15f9">
+                <input type="hidden" name="urlencodeenable" value="1">
+                <input type="hidden" name="name" value="Apertura">
+                <input type="hidden" name="__vtCurrency" value="1">
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                    
+                    <!-- First Name -->
+                    <div>
+                        <label style="display: block; font-weight: 500; font-size: 14px; margin-bottom: 6px; color: #334155;">Nombres</label>
+                        <input type="text" name="firstname" maxlength="40" placeholder="Ej: Alejandro" required style="width: 100%; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0; font-size: 15px; box-sizing: border-box;">
+                        <input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div>
+                        <label style="display: block; font-weight: 500; font-size: 14px; margin-bottom: 6px; color: #334155;">Apellidos</label>
+                        <input type="text" name="lastname" maxlength="80" placeholder="Ej: Llanos" required style="width: 100%; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0; font-size: 15px; box-sizing: border-box;">
+                    </div>
+
+                    <!-- Email -->
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; font-weight: 500; font-size: 14px; margin-bottom: 6px; color: #334155;">Correo electrónico</label>
+                        <input type="email" name="email" data-label="Primary Email" placeholder="ejemplo@correo.com" required style="width: 100%; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0; font-size: 15px; box-sizing: border-box;">
+                    </div>
+
+                    <!-- Mobile Phone -->
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; font-weight: 500; font-size: 14px; margin-bottom: 6px; color: #334155;">Celular</label>
+                        <input type="text" name="mobile" maxlength="50" placeholder="987 654 321" required data-type="phone" style="width: 100%; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0; font-size: 15px; box-sizing: border-box;">
+                    </div>
+                    
+                    <!-- Checkbox de privacidad -->
+                    <div style="grid-column: span 2; margin: 16px 0 8px 0;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="checkbox" required style="width: 18px; height: 18px;">
+                            <span style="font-size: 14px; color: #334155;">
+                                He leído y acepto los
+                                <a href="#" style="color: #2563eb; text-decoration: none; font-weight: 500;">Términos y Condiciones</a>
+                            </span>
+                        </label>
+                    </div>
+                    
+                </div>
+                
+                <!-- Leadsource (oculto) -->
+                <select name="leadsource" data-label="leadsource" hidden="">
+                    <option value="">Selecciona</option>
+                    <option value="Cold Call">Llamada</option>
+                    <option value="Referral">Recomendación</option>
+                    <option value="Word of mouth">Boca a boca</option>
+                    <option value="Web Site" selected="">Página web</option>
+                    <option value="Trade Show">Evento</option>
+                    <option value="Conference">Conferencia</option>
+                    <option value="Direct Mail">Correo directo</option>
+                    <option value="Public Relations">Prensa</option>
+                    <option value="Partner">Partner</option>
+                    <option value="Employee">Empleado</option>
+                    <option value="Self Generated">Búsqueda propia</option>
+                    <option value="Existing Customer">Cliente actual</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Mail Manager">Mail Manager</option>
+                    <option value="Mail Converter">Mail Converter</option>
+                </select>
+
+                <!-- CAMPO REINTEGRADO: Onboarding Status (oculto) -->
+                <select name="cf_leads_onboardingstatus" data-label="label:Onboarding Status" hidden="">
+                    <option value="">Select Value</option>
+                    <option value="No Iniciado">No Iniciado</option>
+                    <option value="Datos de Contacto" selected="">Datos de Contacto</option>
+                    <option value="Validación DNI">Validación DNI</option>
+                    <option value="Validación Biometría">Validación Biometría</option>
+                    <option value="Falla Biometría">Falla Biometría</option>
+                    <option value="Términos y Condiciones">Términos y Condiciones</option>
+                    <option value="Cliente">Cliente</option>
+                </select>
+
+                <button type="submit" id="vtigerFormSubmitBtn_1" style="width: 100%; margin-top: 24px; padding: 16px; background: #0a2540; border: none; color: white; font-weight: 600; border-radius: 16px; cursor: pointer; font-size: 16px; transition: 0.3s ease;">
+                    Abrir cuenta gratis
+                </button>
+                
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 13px; color: #94a3b8;">
+                Tus datos seguros · Sin spam
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts (igual que antes) -->
+<script src="https://pucp7.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+<script src="https://pucp7.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
+<script src="https://pucp7.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+
+<input type="hidden" id="phoneLibScript_1" value="https://pucp7.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js" disabled="">
+<input type="hidden" id="phoneUtilScript_1" value="https://pucp7.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js" disabled="">
+<input type="hidden" id="jQueryScript_1" value="https://pucp7.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js" disabled="">
+<input type="hidden" id="select2Script_1" value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" disabled="">
+<input type="hidden" name="isCaptchaEnabled" value="" disabled="">
+<input type="hidden" name="isVerificationEnabled" value="0" disabled="">
+
+<script type="text/javascript">
+    window.addEventListener("load", function() {
+        function getCountryCode() {
+            var timezoneCountryMap = { "America/Lima": "pe" };
+            var timezone = "";
+            var country = "us";
+            if(Intl && Intl.DateTimeFormat) timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (timezoneCountryMap[timezone]) {
+                country = timezoneCountryMap[timezone];
+            }
+            return country;
+        }
+        
+        var phoneFields = document.querySelectorAll('[data-type="phone"]');
+        if (phoneFields && phoneFields.length) {
+            phoneFields.forEach(function(ele) { 
+                window.intlTelInput(ele, {
+                    initialCountry: "auto",
+                    separateDialCode: true,
+                    autoPlaceholder: false,
+                    hiddenInput: ele.getAttribute("name"),
+                    geoIpLookup: function (success, failure) {
+                        success(getCountryCode());
+                    }
+                });
+            });
+        }
+        
+        var form = document.getElementById("__vtigerWebForm_1");
+        var inputs = form.elements;
+        
+        form.onsubmit = function(event) {
+            document.getElementById("vtigerFormSubmitBtn_1").disabled = true;
+            
+            var required = [];
+            for (var i = 0; i < inputs.length; i++) {
+                var att = inputs[i].getAttribute("required");
+                var val = inputs[i].value;
+                
+                if (att != null) { 
+                    if (val.replace(/^\s+|\s+$/g, "") == "") { 
+                        required.push(inputs[i].getAttribute("label") || inputs[i].name); 
+                    } 
+                }
+                
+                if (inputs[i].type == "email" && val != "") {
+                    var elemLabel = inputs[i].getAttribute("data-label") || "Email";
+                    var emailFilter = /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
+                    var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/;
+                    
+                    if (!emailFilter.test(val)) {
+                        alert("Para el campo " + elemLabel + " ingresa un email válido");
+                        document.getElementById("vtigerFormSubmitBtn_1").disabled = false;
+                        return false;
+                    } else if (val.match(illegalChars)) {
+                        alert("El campo " + elemLabel + " contiene caracteres no válidos");
+                        document.getElementById("vtigerFormSubmitBtn_1").disabled = false;
+                        return false;
+                    }
+                }
+            }
+            
+            if (required.length > 0) {
+                alert("Los siguientes campos son obligatorios: " + required.join(", "));
+                document.getElementById("vtigerFormSubmitBtn_1").disabled = false;
+                return false;
+            }
+            
+            return true;
+        };
+    });
+</script>
