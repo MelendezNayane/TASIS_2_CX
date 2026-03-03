@@ -52,19 +52,29 @@
 </div>
 
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const tokenSeguro = params.get('token');
+    // 1. Intentar capturar al cargar la página
+    let params = new URLSearchParams(window.location.search);
+    let tokenSeguro = params.get('token');
+
     // URL de tu Webhook de n8n
     const WEBHOOK_N8N = "https://ksnores.app.n8n.cloud/webhook-test/3c462c54-807b-4793-82de-efa56b3d7a8f";
 
-    // Función auxiliar para enviar datos a n8n
+    // Función auxiliar mejorada
     async function postData(payload) {
+        // RE-INTENTO: Si el token es null, intentamos leer la URL otra vez
+        if (!tokenSeguro) {
+            params = new URLSearchParams(window.location.search);
+            tokenSeguro = params.get('token');
+        }
+
+        console.log("Token enviado:", tokenSeguro); // Para que revises en la consola F12
+
         try {
             await fetch(WEBHOOK_N8N, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    token: tokenSeguro,
+                    token: tokenSeguro, // Ahora debería tener valor
                     ...payload
                 })
             });
@@ -72,7 +82,6 @@
             console.error("Error enviando a n8n:", error);
         }
     }
-
     // --- LÓGICA PASO 1 ---
     async function enviarIdentificacion() {
     const dni = document.getElementById('input_dni').value;
@@ -137,6 +146,7 @@
 
 </body>
 </html>
+
 
 
 
