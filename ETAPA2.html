@@ -65,8 +65,11 @@
 
         <textarea id="input_comentario" placeholder="Cuéntanos tu experiencia (opcional)" style="width: 100%; height: 80px; padding: 10px; border-radius: 6px; border: 1px solid #ddd;"></textarea>
         
-        <button onclick="enviarEncuesta()" style="background-color: #27ae60; margin-top: 15px;">Finalizar y Enviar</button>
+        <button onclick="enviarEncuesta('llenado')" style="background-color: #27ae60; margin-top: 15px;">Finalizar y Enviar</button>
+        
+        <button onclick="enviarEncuesta('omitida')" style="background-color: #95a5a6; margin-top: 10px; font-size: 14px; background: none; color: #7f8c8d; border: 1px solid #bdc3c7;">Omitir encuesta</button>
     </div>
+    
 </div>
 </div>
 
@@ -156,24 +159,30 @@
         document.getElementById('etapa_encuesta').classList.add('active');
     }
 
-    async function enviarEncuesta() {
-        const estrellas = document.getElementById('input_estrellas').value;
-        const comentario = document.getElementById('input_comentario').value;
+    async function enviarEncuesta(estado) {
+        let payload = {
+            fase: "Encuesta",
+            estado: estado // "llenado" u "omitida"
+        };
 
-        await postData({ 
-            fase: "Encuesta de Satisfacción", 
-            puntuacion: estrellas,
-            comentario: comentario,
-            ultimaHORA: new Date().toISOString() // Opcional, n8n también lo genera
-        });
+        // Si el usuario decidió llenarla, agregamos los datos
+        if (estado === 'llenado') {
+            payload.puntuacion = document.getElementById('input_estrellas').value;
+            payload.comentario = document.getElementById('input_comentario').value;
+        }
 
-        // Ahora sí, vamos al éxito final
+        // Enviamos a n8n
+        await postData(payload);
+
+        // Redirigir al éxito
         window.location.href = "success.html";
     }
+    
 </script>
 
 </body>
 </html>
+
 
 
 
