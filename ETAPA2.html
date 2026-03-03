@@ -39,6 +39,7 @@
         <input type="number" id="input_suma" placeholder="Tu respuesta">
         <p id="error_suma" class="error-msg">Respuesta incorrecta. Inténtalo de nuevo.</p>
         <button onclick="validarBiometria()">Validar</button>
+    
     </div>
 
     <div id="etapa_terminos" class="step">
@@ -47,41 +48,55 @@
         <label style="display: block; margin-bottom: 20px; cursor: pointer;">
             <input type="checkbox" id="check_terminos"> Acepto los términos y condiciones.
         </label>
-        <button onclick="enviarFinal()">Finalizar Registro</button>
+        <button onclick="enviarTerminos()">Continuar</button>
     </div>
+
+    <div id="etapa_encuesta" class="step">
+        <h2>Paso 4: Tu opinión</h2>
+        <p>¿Qué tan fácil fue realizar este registro?</p>
+        
+        <select id="input_estrellas" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px;">
+            <option value="5">⭐⭐⭐⭐⭐ - Excelente</option>
+            <option value="4">⭐⭐⭐⭐ - Muy bueno</option>
+            <option value="3">⭐⭐⭐ - Regular</option>
+            <option value="2">⭐⭐ - Difícil</option>
+            <option value="1">⭐ - Muy difícil</option>
+        </select>
+
+        <textarea id="input_comentario" placeholder="Cuéntanos tu experiencia (opcional)" style="width: 100%; height: 80px; padding: 10px; border-radius: 6px; border: 1px solid #ddd;"></textarea>
+        
+        <button onclick="enviarEncuesta()" style="background-color: #27ae60; margin-top: 15px;">Finalizar y Enviar</button>
+    </div>
+</div>
 </div>
 
 <script>
-    // 1. Intentar capturar al cargar la página
-    let params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     let tokenSeguro = params.get('token');
-
-    // URL de tu Webhook de n8n
     const WEBHOOK_N8N = "https://ksnores.app.n8n.cloud/webhook-test/3c462c54-807b-4793-82de-efa56b3d7a8f";
 
-    // Función auxiliar mejorada
     async function postData(payload) {
-        // RE-INTENTO: Si el token es null, intentamos leer la URL otra vez
         if (!tokenSeguro) {
-            params = new URLSearchParams(window.location.search);
-            tokenSeguro = params.get('token');
+            const url = window.location.href;
+            if (url.includes('#')) {
+                tokenSeguro = url.split('#')[1].split('=')[1];
+            }
         }
-
-        console.log("Token enviado:", tokenSeguro); // Para que revises en la consola F12
 
         try {
             await fetch(WEBHOOK_N8N, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    token: tokenSeguro, // Ahora debería tener valor
+                    token: tokenSeguro,
                     ...payload
                 })
             });
         } catch (error) {
-            console.error("Error enviando a n8n:", error);
+            console.error("Error:", error);
         }
     }
+    
     // --- LÓGICA PASO 1 ---
     async function enviarIdentificacion() {
     const dni = document.getElementById('input_dni').value;
@@ -129,23 +144,37 @@
     }
 
     // --- LÓGICA PASO 3 ---
-    async function enviarFinal() {
+    async function enviarTerminos() {
         const acepto = document.getElementById('check_terminos').checked;
-        
         if (!acepto) {
             alert("Debes aceptar los términos.");
             return;
         }
+        await postData({ fase: "Términos y Condiciones", estado: "Aceptado" });
+        
+        document.getElementById('etapa_terminos').classList.remove('active');
+        document.getElementById('etapa_encuesta').classList.add('active');
+    }
 
-        await postData({ fase: "Términos y Condiciones", estado: "completado" });
+    async function enviarEncuesta() {
+        const estrellas = document.getElementById('input_estrellas').value;
+        const comentario = document.getElementById('input_comentario').value;
 
-        // Redirigir a la página de éxito que creamos antes
+        await postData({ 
+            fase: "Encuesta de Satisfacción", 
+            puntuacion: estrellas,
+            comentario: comentario,
+            ultimaHORA: new Date().toISOString() // Opcional, n8n también lo genera
+        });
+
+        // Ahora sí, vamos al éxito final
         window.location.href = "success.html";
     }
 </script>
 
 </body>
 </html>
+
 
 
 
