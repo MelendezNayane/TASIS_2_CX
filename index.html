@@ -45,6 +45,39 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
+    <style>
+        .tooltip {
+        position: relative;
+        cursor: help;
+        border-bottom: 1px dotted #0084ff;
+        font-weight: 600;
+        }
+
+        .tooltip .tooltip-text {
+        visibility: hidden;
+        opacity: 0;
+        width: 220px;
+        background: #0f172a;
+        color: #fff;
+        text-align: left;
+        border-radius: 10px;
+        padding: 10px 12px;
+        position: absolute;
+        z-index: 50;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        line-height: 1.4;
+        transition: opacity 0.25s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+        }
+        </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
@@ -95,11 +128,28 @@
 <div class="space-y-2 text-lg text-slate-600 dark:text-slate-300">
 <div class="flex items-center gap-2">
 <span class="material-icons-outlined text-primary text-sm">help_outline</span>
-<p>Abre tu cuenta digital con COSTO S/.0</p>
+<p>
+Abre tu
+<span class="tooltip">
+Cuenta digital
+<span class="tooltip-text">
+Una cuenta bancaria que puedes abrir y administrar completamente en línea, sin necesidad de ir a una agencia.
+</span>
+</span>
+con COSTO S/.0
+</p>
 </div>
 <div class="flex items-center gap-2">
 <span class="material-icons-outlined text-primary text-sm">help_outline</span>
-<p>Recibes hasta 4.1 % de TREA</p>
+<p>
+Recibes hasta 4.1 % de 
+<span class="tooltip">
+TREA
+<span class="tooltip-text">
+TREA (Tasa de Rendimiento Efectivo Anual): indica cuánto dinero ganarías en un año considerando intereses y capitalización.
+</span>
+</span>
+</p>
 </div>
 </div>
 <div class="flex flex-col sm:flex-row gap-4">
@@ -513,6 +563,5 @@
             animation: float 6s ease-in-out infinite;
         }
     </style>
-
 
 </body></html>
